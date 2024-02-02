@@ -15,12 +15,27 @@ public:
             return head;
         }
 
-        ListNode* newHead =  head->next;
-        head->next = swapPairs(head->next->next);
-        newHead->next = head;
+        // ListNode* newHead =  head->next;
+        // head->next = swapPairs(head->next->next);
+        // newHead->next = head;
 
-        return newHead;
+        // return newHead;
 
+        ListNode* curr = head;
+        ListNode* dummy = new ListNode();
+        ListNode* prev = dummy;
+        
+        while(curr != NULL && curr->next != NULL){
+            prev->next = curr->next;
+            curr->next = prev->next->next;
+
+            prev->next->next = curr;
+
+            prev = curr;
+            curr = curr->next;
+        }
+
+        return dummy->next;
 
         
     }
