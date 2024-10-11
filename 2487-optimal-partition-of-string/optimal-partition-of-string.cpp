@@ -8,7 +8,7 @@ public:
         int count = 0;
         int n = s.size();
 
-        unordered_set<char> seenSet;
+        set<char> seenSet;
 
         for(int i = 0;i<n;i++) {
             if(seenSet.find(s[i]) != seenSet.end()){
