@@ -10,9 +10,7 @@ public:
                 if(count > 0)
                     res = res + s[i];
                 count++;
-            }
-
-            if(s[i] == ')'){
+            } else {
                 count--;
                 if(count > 0)
                     res = res + s[i];
