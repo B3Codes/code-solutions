@@ -7,24 +7,23 @@ public:
 
         int count = 0;
         
-        if(n<2)
-            return res;
-        
         for(int i = 0;i<m;i++){
             int index = queries[i][0];
             int color = queries[i][1];
             
-
-            if(index < n-1 && colors[index] != 0 && colors[index + 1] != 0 && colors[index] == colors[index + 1]) {
+            //   handle decrement logic
+            if(index < n-1 && colors[index] != 0  && colors[index] == colors[index + 1]) {
                 count--;
             }
 
-            if(index > 0 && colors[index] != 0 && colors[index - 1] != 0 && colors[index] == colors[index - 1]){
+            if(index > 0 && colors[index] != 0  && colors[index] == colors[index - 1]){
                 count--;
             }
             
+            // update the color
             colors[index] = color;
 
+            // Handle incremnet logic
             if(index < n-1 && colors[index] == colors[index + 1]) {
                 count++;
             }
