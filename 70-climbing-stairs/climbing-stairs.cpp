@@ -33,16 +33,43 @@ public:
 
 // Approach 2: Optimize with Tabulation (Bottom-Up)
 
-    int climbStairs(int n) {
-        vector<int> dp(n+1, 0);
+    // int climbStairs(int n) {
+    //     vector<int> dp(n+1, 0);
 
-        dp[0] = 1;
-        dp[1] = 1;
+    //     dp[0] = 1;
+    //     dp[1] = 1;
 
-        for(int i = 2;i<dp.size();i++){
-            dp[i] = dp[i-1] + dp[i-2]; 
+    //     for(int i = 2;i<dp.size();i++){
+    //         dp[i] = dp[i-1] + dp[i-2]; 
+    //     }
+
+    //     return dp[n];
+    // }
+
+// Approach 3: Space Optimization (Improving Space Complexity)
+int climbStairs(int n) {
+    // Base case: 
+    // If there are 0 or 1 steps, there is only 1 way to climb (do nothing or take one step).
+    if(n == 0 || n == 1)
+        return 1;
+
+    // Initialize two variables to store the number of ways to reach the previous two steps.
+    // prev1 will store the number of ways to reach the step (i-1) and prev2 will store the number of ways to reach (i-2).
+    int prev1 = 1, prev2 = 1;
+    int current = 0;
+        for(int i =2;i<n+1;i++){
+             // Calculate the number of ways to reach the current step (i):
+        // This is the sum of the ways to reach the (i-1)th step and the (i-2)th step.
+            current = prev1 + prev2;
+
+        // Update prev2 to be prev1 (previous step) for the next iteration
+
+            prev2 = prev1;
+
+        // Update prev1 to be the current (newly calculated) value for the next iteration
+            prev1 = current;
         }
-
-        return dp[n];
+    // After the loop, prev1 will hold the number of ways to reach the nth step
+        return prev1;
     }
 };
