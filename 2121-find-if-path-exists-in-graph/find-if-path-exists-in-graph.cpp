@@ -27,6 +27,7 @@ public:
         queue<int> q;
 
         // BFS/DFS from source.
+        visited[source] = 1;
         q.push(source);
        
         while(!q.empty()) {
