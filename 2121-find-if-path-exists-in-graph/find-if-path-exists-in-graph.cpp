@@ -23,28 +23,44 @@ public:
         }
 
         // Initialize visited array.
-        vector<int> visited(n,-1);
-        queue<int> q;
+        vector<bool> visited(n,false);
+        // queue<int> q;
 
-        // BFS/DFS from source.
-        visited[source] = 1;
-        q.push(source);
+        // // BFS/DFS from source.
+        // visited[source] = 1;
+        // q.push(source);
        
-        while(!q.empty()) {
-            int vis = q.front();  
-            q.pop();
+        // while(!q.empty()) {
+        //     int vis = q.front();  
+        //     q.pop();
             
-            for(auto &e: adj[vis]) {
+        //     for(auto &e: adj[vis]) {
+        //         if(e == destination) return true;
+        //         if(visited[e] == -1) {
+        //             visited[e] = 1;
+        //             q.push(e);
+        //         }
+        //     }
+
+            
+        // }
+
+    // DFS
+    stack<int> s;
+    visited[source] = true;
+    s.push(source);
+
+    while(!s.empty()) {
+        int el = s.top();
+        s.pop();
+        for(auto &e: adj[el]) {
+            if(!visited[e]){
                 if(e == destination) return true;
-                if(visited[e] == -1) {
-                    visited[e] = 1;
-                    q.push(e);
-                }
+                s.push(e);
+                visited[e] = true;
             }
-
-            
         }
-
+    }
        
 
         return false;
