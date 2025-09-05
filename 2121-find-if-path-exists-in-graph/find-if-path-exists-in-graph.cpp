@@ -33,10 +33,11 @@ public:
         while(!q.empty()) {
             int vis = q.front();  
             q.pop();
-            visited[vis] = 1;
+            
             for(auto &e: adj[vis]) {
                 if(e == destination) return true;
                 if(visited[e] == -1) {
+                    visited[e] = 1;
                     q.push(e);
                 }
             }
