@@ -4,9 +4,11 @@ public:
         int n = rooms.size();
         int count = 0;
         vector<bool> visited(n, false);
+        
+        
         queue<int> q;
 
-         q.push(0);
+        q.push(0);
         visited[0] = true;
 
        
@@ -26,6 +28,5 @@ public:
 
         return count == n;
 
-        return true;
     }
 };
